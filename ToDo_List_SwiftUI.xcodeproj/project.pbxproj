@@ -13,6 +13,7 @@
 		27A3664C288093D000D57D1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27A3664B288093D000D57D1B /* Preview Assets.xcassets */; };
 		27A3664E288093D000D57D1B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3664D288093D000D57D1B /* Persistence.swift */; };
 		27A36651288093D000D57D1B /* ToDo_List_SwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27A3664F288093D000D57D1B /* ToDo_List_SwiftUI.xcdatamodeld */; };
+		27A3665828809ABF00D57D1B /* ToDoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3665728809ABF00D57D1B /* ToDoListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		27A3664B288093D000D57D1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27A3664D288093D000D57D1B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		27A36650288093D000D57D1B /* ToDo_List_SwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDo_List_SwiftUI.xcdatamodel; sourceTree = "<group>"; };
+		27A3665728809ABF00D57D1B /* ToDoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				27A3664D288093D000D57D1B /* Persistence.swift */,
 				27A3664F288093D000D57D1B /* ToDo_List_SwiftUI.xcdatamodeld */,
 				27A3664A288093D000D57D1B /* Preview Content */,
+				27A3665728809ABF00D57D1B /* ToDoListItem.swift */,
 			);
 			path = ToDo_List_SwiftUI;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				27A3664E288093D000D57D1B /* Persistence.swift in Sources */,
 				27A36651288093D000D57D1B /* ToDo_List_SwiftUI.xcdatamodeld in Sources */,
 				27A36647288093CE00D57D1B /* ContentView.swift in Sources */,
+				27A3665828809ABF00D57D1B /* ToDoListItem.swift in Sources */,
 				27A36645288093CE00D57D1B /* ToDo_List_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

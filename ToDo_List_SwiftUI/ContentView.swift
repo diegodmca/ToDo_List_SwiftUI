@@ -9,9 +9,74 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    
+    @FocusState var isFocused: Bool
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(fetchRequest: ToDoListItem.getAllToDoListItems())
+    var items: FetchedResults<ToDoListItem>
+    @State var text: String = ""
+    
     var body: some View {
-        Text("Select an item")
-            .padding()
+        NavigationView{
+            List{
+                Section(header: Text("New Item")) {
+                    HStack {
+                        TextField("Enter new item...", text: $text)
+                            .keyboardType(.default)
+                            .focused($isFocused)
+                        Button(action: {
+                        
+                            if !text.isEmpty{
+                                let newItem = ToDoListItem(context: context)
+                                newItem.name = text
+                                newItem.createdAt = Date()
+                                do {
+                                    try context.save()
+                                }
+                                catch {
+                                    print(error)
+                                }
+                                text = ""
+                            }
+                        }, label: {
+                            Text("Save")
+                        })
+                    }
+                }
+                Section{
+                    ForEach(items) { ToDoListItem in
+                        VStack(alignment: .leading){
+                            Text(ToDoListItem.name!)
+                                .font(.headline)
+                            Text("\(ToDoListItem.createdAt!)")
+                        }
+                    }.onDelete(perform: { indexSet in
+                        guard let index = indexSet.first else {
+                            return
+                        }
+                        let itemToDelete = items[index]
+                        context.delete(itemToDelete)
+                        do{
+                            try context.save()
+                        }
+                        catch {
+                            print(error)
+                        }
+                    })
+                    
+                }
+            }
+            .navigationTitle("To Do List")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard){
+                    Spacer()
+                    Button("Done") {
+                        isFocused = false
+                    }
+                }
+            }
+        }
+        
         }
     }
 
