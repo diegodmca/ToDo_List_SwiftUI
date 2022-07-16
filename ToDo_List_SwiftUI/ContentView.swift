@@ -6,16 +6,13 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    
     @FocusState var isFocused: Bool
     @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: ToDoListItem.getAllToDoListItems())
     var items: FetchedResults<ToDoListItem>
     @State var text: String = ""
-    
     var body: some View {
         NavigationView{
             List{
@@ -25,7 +22,7 @@ struct ContentView: View {
                             .keyboardType(.default)
                             .focused($isFocused)
                         Button(action: {
-                        
+                            
                             if !text.isEmpty{
                                 let newItem = ToDoListItem(context: context)
                                 newItem.name = text
@@ -44,11 +41,11 @@ struct ContentView: View {
                     }
                 }
                 Section{
-                    ForEach(items) { ToDoListItem in
+                    ForEach(items) { toDoListItem in
                         VStack(alignment: .leading){
-                            Text(ToDoListItem.name!)
+                            Text(toDoListItem.name!)
                                 .font(.headline)
-                            Text("\(ToDoListItem.createdAt!)")
+                            Text("\(toDoListItem.createdAt!.formatted(date: .abbreviated, time: .shortened))")
                         }
                     }.onDelete(perform: { indexSet in
                         guard let index = indexSet.first else {
